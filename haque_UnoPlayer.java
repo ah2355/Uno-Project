@@ -50,7 +50,10 @@ public class haque_UnoPlayer implements UnoPlayer {
        played from players hand card which will 
        at least make sure the  next opponent doesn't win
        */
-      
+      //if the next opponent has 2 or 3 cards then 
+      // appropriate card would be played depending
+      // on what card player has on their hand so that
+      // their opponent doesn't win 
       if(opponents[0]==2 || opponents[0]==3)
       {
         for(int a=0;a<hand.size();a++)
@@ -78,7 +81,8 @@ public class haque_UnoPlayer implements UnoPlayer {
           }
       }
 
-      
+      //checks to see if the player has same number or 
+      //color card and the card would be played depending on the card player has
      for(int i=0; i<hand.size();i++)
        {
          if(calledNum==hand.get(i).getNumber() && calledNum!= -1)
@@ -89,6 +93,11 @@ public class haque_UnoPlayer implements UnoPlayer {
          {
            return i;
          }
+           // if the up card is a wild or wild draw 4
+           // this for loop would check what color was
+           // called by the opponent and would return 
+           // a card that will be the same color as 
+           // opponent cards
          else if(calledRank.equals(Rank.WILD) || calledRank.equals(Rank.WILD_D4))
          {
            for(int j =0; j<hand.size();j++)
@@ -213,6 +222,8 @@ public class haque_UnoPlayer implements UnoPlayer {
          return Color.GREEN;
         } 
       }
+      // If the opponent didn't called any wild card 
+      // and the player doesn't have any NUMBER card then the player will randomly call a color.
       int g = (int) (Math.random() * 4);
 
       if(g==1)
