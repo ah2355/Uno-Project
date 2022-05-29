@@ -194,20 +194,41 @@ public class haque_UnoPlayer implements UnoPlayer {
       // a color card to play so in that case player has
       // to call a color which is not same as the 
       // opponent's next card
-    
-      if(colopponents[0]!=null && !colopponents[0].equals(Color.RED))
+      if(colopponents[0]!=null)
       {
-        return  Color.RED;
+           if(!colopponents[0].equals(Color.RED))
+          {
+            return Color.RED;
+          }
+        else if(!colopponents[0].equals(Color.BLUE))
+          {
+          return  Color.BLUE;
+          }
+        else if(!colopponents[0].equals(Color.YELLOW))
+        {
+          return Color.YELLOW;
+        }
+        else if(!colopponents[0].equals(Color.GREEN))
+        {
+         return Color.GREEN;
+        } 
       }
-    else if(colopponents[0]!=null && !colopponents[0].equals(Color.BLUE))
+      int g = (int) (Math.random() * 4);
+
+      if(g==1)
       {
-      return  Color.BLUE;
+        return Color.RED;
       }
-    else if(colopponents[0]!=null && !colopponents[0].equals(Color.YELLOW))
-    {
-      return Color.YELLOW;
-    }
-    return Color.RED;
+      else if(g==2)
+      {
+        return Color.BLUE;
+      }
+      else if(g==3)
+      {
+        return Color.GREEN;
+      }
+       return Color.YELLOW;
+      
 }
   
 }
