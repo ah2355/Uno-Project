@@ -207,7 +207,7 @@ public class haque_UnoPlayer implements UnoPlayer {
     {
       return Color.YELLOW;
     }
-    return Color.GREEN; 
+    return Color.RED;
 }
   
 }
