@@ -91,13 +91,17 @@ public class haque_UnoPlayer implements UnoPlayer {
           }
       }
 
-      //checks to see if the player has same number or 
+      //checks to see if the player has same 
       //color card and the card would be played depending on the card player has
      for(int i=0; i<hand.size();i++)
        {
          if(calledCol.equals(hand.get(i).getColor()))
          {
            int num =i;
+           // this for loop calls the 
+           //card with highest value num
+           //which has the same color as the color
+           // in the up card
            for(int j=0;j<hand.size();j++)
               {
                 if(hand.get(j).getColor().equals(calledCol))
@@ -115,7 +119,9 @@ public class haque_UnoPlayer implements UnoPlayer {
               }
            return num;
          }
-           else if(calledNum==hand.get(i).getNumber() && calledNum!= -1)
+           //check if the player card has the same num
+           // as the num in the up card
+       else if(calledNum==hand.get(i).getNumber() && calledNum!= -1)
          {
            return i;
          }
