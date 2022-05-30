@@ -51,7 +51,7 @@ public class haque_UnoPlayer implements UnoPlayer {
        */
 
       
-      //if the next opponent has 2 or 3 cards left  to win then an appropriate card would be played depending on what card player has on their hand so that their opponent doesn't win 
+      /*if the next opponent has 2 or 3 cards left  to win then an appropriate card would be played depending on what card player has on their hand so that their opponent doesn't win */
       if(opponents[0]==2 || opponents[0]==3)
       {
         for(int a=0;a<hand.size();a++)
@@ -78,10 +78,9 @@ public class haque_UnoPlayer implements UnoPlayer {
             }
           }
       }
-      //if the opponent across from the player has 
-      // 1 or 2 card to win a reverse card would be 
-      // played so that the player across from the player
-      // has less chance to win
+      /*if the opponent across from the player has 
+       1 or 2 card to win a reverse card would be 
+     played so that the player across from the player has less chance to win*/
       if(opponents[1]==1 || opponents[1]==2)
       {
         for(int i =0; i <hand.size();i++)
@@ -94,17 +93,13 @@ public class haque_UnoPlayer implements UnoPlayer {
           }
       }
 
-      //checks to see if the player has same 
-      //color card and the card would be played depending on the card player has
+      /*checks to see if the player has same color card and the card would be played depending on the card player has*/
      for(int i=0; i<hand.size();i++)
        {
          if(calledCol.equals(hand.get(i).getColor()))
          {
            int num =i;
-           // this for loop calls the 
-           //card with highest value num
-           //which has the same color as the color
-           // in the up card
+           /* this for loop calls the card with highest value numwhich has the same color as the color in the up card*/
            for(int j=0;j<hand.size();j++)
               {
                 if(hand.get(j).getColor().equals(calledCol))
@@ -122,8 +117,8 @@ public class haque_UnoPlayer implements UnoPlayer {
               }
            return num;
          }
-           //check if the player card has the same num
-           // as the num in the up card
+           /*check if the player card has the same num
+            as the num in the up card*/
        else if(calledNum==hand.get(i).getNumber() && calledNum!= -1)
          {
            return i;
@@ -204,7 +199,7 @@ public class haque_UnoPlayer implements UnoPlayer {
          return hand.get(index).getColor(); 
         }
       }
-    //this for loop looks for the color that the player has most and return the index of the  most called color in the card
+    /*this for loop looks for the color that the player has most and return the index of the  most called color in the card*/
       for(int i=0; i<hand.size();i++)
         {
           int x = 0;
@@ -231,7 +226,7 @@ public class haque_UnoPlayer implements UnoPlayer {
         {
          return hand.get(index).getColor(); 
         }
-       //Sometimes the palyer might not have a color card to play so in that case player has to call a color which is not same as the opponent's next card
+       /*Sometimes the palyer might not have a color card to play so in that case player has to call a color which is not same as the opponent's next card*/
       if(colopponents[0]!=null)
       {
            if(!colopponents[0].equals(Color.RED))
@@ -251,7 +246,7 @@ public class haque_UnoPlayer implements UnoPlayer {
          return Color.GREEN;
         } 
       }
-      // If the opponent didn't called any wild card  and the player doesn't have any NUMBER card then the player will randomly call a color.
+      /* If the opponent didn't called any wild card  and the player doesn't have any NUMBER card then the player will randomly call a color.*/
       int g = (int) (Math.random() * 4);
 
       if(g==1)
