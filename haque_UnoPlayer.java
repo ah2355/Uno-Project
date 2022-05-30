@@ -132,9 +132,9 @@ public class haque_UnoPlayer implements UnoPlayer {
          {
            for(int j =0; j<hand.size();j++)
              {
-               if(calledColor.equals(hand.get(j).getColor()))
+         if(calledColor.equals(hand.get(j).getColor()))
                   {
-                 return j;
+                   return j;
                   }
              }
          }
