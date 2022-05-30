@@ -78,7 +78,10 @@ public class haque_UnoPlayer implements UnoPlayer {
             }
           }
       }
-
+      //if the opponent across from the player has 
+      // 1 or 2 card to win a reverse card would be 
+      // played so that the player across from the player
+      // has less chance to win
       if(opponents[1]==1 || opponents[1]==2)
       {
         for(int i =0; i <hand.size();i++)
