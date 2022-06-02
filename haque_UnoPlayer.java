@@ -140,7 +140,11 @@ public class haque_UnoPlayer implements UnoPlayer {
          }
          
        }
-     
+
+      /*if there is no code that can be played
+      * then a card wihtout numbers such as: SKIP
+      * WILD card will be played
+      */
       for(int i=0; i<hand.size();i++)
         {
           if(hand.get(i).getColor().equals(Color.NONE))
@@ -253,7 +257,7 @@ public class haque_UnoPlayer implements UnoPlayer {
       }
       /* If the opponent didn't called any wild card  and the player doesn't have any NUMBER card then the player will randomly call a color.*/
       int g = (int) (Math.random() * 4);
-
+    
       if(g==1)
       {
         return Color.RED;
@@ -267,7 +271,6 @@ public class haque_UnoPlayer implements UnoPlayer {
         return Color.GREEN;
       }
        return Color.YELLOW;
-      
 }
   
 }
