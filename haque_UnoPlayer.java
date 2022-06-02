@@ -255,6 +255,50 @@ public class haque_UnoPlayer implements UnoPlayer {
          return Color.GREEN;
         } 
       }
+
+      if(colopponents[1]!=null)
+      {
+        if(!colopponents[1].equals(Color.RED))
+        {
+          return Color.RED;
+          
+        }
+        else if(!colopponents[1].equals(Color.BLUE))
+          {
+          return  Color.BLUE;
+          }
+        else if(!colopponents[1].equals(Color.YELLOW))
+        {
+          return Color.YELLOW;
+        }
+        else if(!colopponents[1].equals(Color.GREEN))
+        {
+         return Color.GREEN;
+        }
+        
+      }
+
+      if(colopponents[2]!=null)
+      {
+        if(!colopponents[2].equals(Color.RED))
+        {
+          return Color.RED;
+          
+        }
+        else if(!colopponents[2].equals(Color.BLUE))
+          {
+          return  Color.BLUE;
+          }
+        else if(!colopponents[2].equals(Color.YELLOW))
+        {
+          return Color.YELLOW;
+        }
+        else if(!colopponents[2].equals(Color.GREEN))
+        {
+         return Color.GREEN;
+        }
+        
+      }
       /* If the opponent didn't called any wild card  and the player doesn't have any NUMBER card then the player will randomly call a color.*/
       int g = (int) (Math.random() * 4);
     
