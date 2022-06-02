@@ -185,7 +185,7 @@ public class haque_UnoPlayer implements UnoPlayer {
                 if(!hand.get(a).getColor().equals(Color.NONE) && !hand.get(a).getColor().equals(colopponents[0]))
                 {
                   l++;
-                }
+                }  
               }
             }
           if(l>y)
@@ -194,10 +194,15 @@ public class haque_UnoPlayer implements UnoPlayer {
             index = a;
           }
         } 
-        if(!hand.get(index).getColor().equals(Color.NONE))
+        if(index<hand.size() && !hand.get(index).getColor().equals(Color.NONE))
         {
          return hand.get(index).getColor(); 
         }
+      }
+    else
+      {
+        index = 0;
+        y =0;
       }
     /*this for loop looks for the color that the player has most and return the index of the  most called color in the card*/
       for(int i=0; i<hand.size();i++)
@@ -222,7 +227,7 @@ public class haque_UnoPlayer implements UnoPlayer {
           
         }
         //THIS IS WHERE YOUR AMAZING CODE GOES
-        if(!hand.get(index).getColor().equals(Color.NONE))
+        if(index<hand.size() && !hand.get(index).getColor().equals(Color.NONE))
         {
          return hand.get(index).getColor(); 
         }
