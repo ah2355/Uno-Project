@@ -52,7 +52,7 @@ public class haque_UnoPlayer implements UnoPlayer {
 
       
       /*if the next opponent has 2 or 3 cards left  to win then an appropriate card would be played depending on what card player has on their hand so that their opponent doesn't win */
-      if(opponents[0]==2 || opponents[0]==3)
+      if(opponents[0]==1||opponents[0]==2 || opponents[0]==3)
       {
         for(int a=0;a<hand.size();a++)
           {
@@ -81,7 +81,9 @@ public class haque_UnoPlayer implements UnoPlayer {
       /*if the opponent across from the player has 
        1 or 2 card to win a reverse card would be 
      played so that the player across from the player has less chance to win*/
-      if(opponents[1]==1 || opponents[1]==2)
+      for(int j=1;j<opponents.length;j++)
+        {
+         if(opponents[j]==1 || opponents[j]==2)
       {
         for(int i =0; i <hand.size();i++)
           {
@@ -91,7 +93,8 @@ public class haque_UnoPlayer implements UnoPlayer {
               return i;
             }
           }
-      }
+      } 
+        }
 
       /*checks to see if the player has same color card and the card would be played depending on the card player has*/
      for(int i=0; i<hand.size();i++)
@@ -175,6 +178,7 @@ public class haque_UnoPlayer implements UnoPlayer {
       int index =0;
       int y = 0;
     Color[] colopponents = state.getMostRecentColorCalledByUpcomingPlayers();
+    int [] opponents = state.getNumCardsInHandsOfUpcomingPlayers();
       //first, checks if the opponent next to player at index 0 called a wild card.
       if(colopponents[0]!=null && !colopponents[0].equals(Color.NONE))
       {
@@ -236,81 +240,88 @@ public class haque_UnoPlayer implements UnoPlayer {
          return hand.get(index).getColor(); 
         }
        /*Sometimes the palyer might not have a color card to play so in that case player has to call a color which is not same as the opponent's next card*/
-      if(colopponents[0]!=null)
+    for(int i =0; i<colopponents.length;i++)
+      if(colopponents[i]!=null)
       {
-           if(!colopponents[0].equals(Color.RED))
+           if(!colopponents[i].equals(Color.RED))
           {
             return Color.RED;
           }
-        else if(!colopponents[0].equals(Color.BLUE))
+        else if(!colopponents[i].equals(Color.BLUE))
           {
           return  Color.BLUE;
           }
-        else if(!colopponents[0].equals(Color.YELLOW))
+        else if(!colopponents[i].equals(Color.YELLOW))
         {
           return Color.YELLOW;
         }
-        else if(!colopponents[0].equals(Color.GREEN))
+        else if(!colopponents[i].equals(Color.GREEN))
         {
          return Color.GREEN;
         } 
       }
+    //If the next opponent is about to win
+    // a card color with draw two, skip or reverse
+    // will be returned
+       for(int i=0; i<hand.size();i++)
+         {
+           if(opponents[0]==1 || opponents[0]==2 || opponents[0]==3)
+           {
+             if(hand.get(i).getRank().equals(Rank.DRAW_TWO))
+             {
+               return hand.get(i).getColor();
+             }
+             if(hand.get(i).getRank().equals(Rank.SKIP))
+            {
+              return hand.get(i).getColor();
+            }
+            else if(hand.get(i).getRank().equals(Rank.REVERSE))
+            {
+              return hand.get(i).getColor();
+            }
+           }
+         }
 
-      if(colopponents[1]!=null)
+    //If any of the players in the match is about
+    // to win a reverse card would be played.
+    for(int j=1;j<opponents.length;j++)
+        {
+         if(opponents[j]==1 || opponents[j]==2)
       {
-        if(!colopponents[1].equals(Color.RED))
-        {
-          return Color.RED;
-          
-        }
-        else if(!colopponents[1].equals(Color.BLUE))
+        for(int i =0; i <hand.size();i++)
           {
-          return  Color.BLUE;
+              
+      if(hand.get(i).getRank().equals(Rank.REVERSE))
+            {
+              return hand.get(i).getColor();
+            }
           }
-        else if(!colopponents[1].equals(Color.YELLOW))
-        {
-          return Color.YELLOW;
+      } 
         }
-        else if(!colopponents[1].equals(Color.GREEN))
-        {
-         return Color.GREEN;
-        }
-        
-      }
 
-      if(colopponents[2]!=null)
-      {
-        if(!colopponents[2].equals(Color.RED))
-        {
-          return Color.RED;
-          
-        }
-        else if(!colopponents[2].equals(Color.BLUE))
-          {
-          return  Color.BLUE;
-          }
-        else if(!colopponents[2].equals(Color.YELLOW))
-        {
-          return Color.YELLOW;
-        }
-        else if(!colopponents[2].equals(Color.GREEN))
-        {
-         return Color.GREEN;
-        }
-        
-      }
-      /* If the opponent didn't called any wild card  and the player doesn't have any NUMBER card then the player will randomly call a color.*/
+    //If the player doesn't have a lot of same
+    // color cards. Then the first cord without a color.None would be played.
+       for(int i=0;i<hand.size();i++)
+         {
+           if(!hand.get(i).getColor().equals(Color.NONE))
+           {
+             return hand.get(i).getColor();
+           }
+         }
+
+    
+      /* At last,  if the player doesn't have any NUMBER card then the player will randomly call a color.*/
       int g = (int) (Math.random() * 4);
     
-      if(g==1)
+      if(g==0)
       {
         return Color.RED;
       }
-      else if(g==2)
+      else if(g==1)
       {
         return Color.BLUE;
       }
-      else if(g==3)
+      else if(g==2)
       {
         return Color.GREEN;
       }
