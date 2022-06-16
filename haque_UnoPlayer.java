@@ -56,11 +56,19 @@ public class haque_UnoPlayer implements UnoPlayer {
       {
         for(int a=0;a<hand.size();a++)
           {
-            if(hand.get(a).getRank().equals(Rank.WILD_D4))
+            /* Created this for loop
+             * because to make sure the 
+             * hand has at least one WILD Draw 4
+             * card to play
+             */
+           for(int l =0;l<hand.size();l++)
+             {
+          if(hand.get(l).getRank().equals(Rank.WILD_D4))
                {
-                 return a;
+                 return l;
                }
-            else if(hand.get(a).getRank().equals(Rank.DRAW_TWO))
+             } 
+        if(hand.get(a).getRank().equals(Rank.DRAW_TWO))
             {
               return a;
             }
